@@ -1,0 +1,3 @@
+[submodule "polybar/.config/polybar/scripts/pomodoro"]
+	path = polybar/.config/polybar/scripts/pomodoro
+	url = https://github.com/kirillin/polybar-pomodoro

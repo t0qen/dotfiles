@@ -1,0 +1,27 @@
+#!/bin/sh
+
+STATE="$HOME/.cache/brightness"
+HDMI="HDMI-2"
+DP="DP-1"
+
+[ -f "$STATE" ] || echo "1.0" > "$STATE"
+
+current=$(cat "$STATE")
+
+case "$1" in
+    up)
+        new=$(awk "BEGIN {v=$current+0.1; if(v>1.0)v=1.0; print v}")
+        ;;
+    down)
+        new=$(awk "BEGIN {v=$current-0.1; if(v<0.2)v=0.2; print v}")
+        ;;
+    *)
+        exit 1
+        ;;
+esac
+
+echo "$new" > "$STATE"
+
+xrandr \
+  --output "$HDMI" --brightness "$new" \
+  --output "$DP" --brightness "$new"

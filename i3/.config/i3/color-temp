@@ -1,0 +1,26 @@
+#!/bin/sh
+
+STATE="$HOME/.cache/color_temp"
+
+[ -f "$STATE" ] || echo "6500" > "$STATE"
+
+current=$(cat "$STATE")
+
+case "$1" in
+    warmer)
+        new=$((current - 300))
+        [ "$new" -lt 3000 ] && new=3000
+        ;;
+    cooler)
+        new=$((current + 300))
+        [ "$new" -gt 6500 ] && new=6500
+        ;;
+    *)
+        exit 1
+        ;;
+esac
+
+echo "$new" > "$STATE"
+
+pkill redshift 2>/dev/null
+redshift -P -O "$new"
