@@ -1,14 +1,24 @@
 { config, pkgs, ... }:
+let
+  home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/release-26.05.tar.gz;
+in
 {
   imports =
     [
       ./hardware-configuration.nix
+      (import "${home-manager}/nixos")
     ];
   
+  home-manager.useUserPackages = true;
+  home-manager.useGlobalPkgs = true;
+  home-manager.backupFileExtension = "backup";
+  home-manager.users.dev = import ./home.nix;
+
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
   boot.loader.grub.fsIdentifier = "provided";
+  #boot.loader.grub.theme = "catppuccin";
 
   networking.hostName = "home";
   networking.networkmanager.enable = true;
@@ -38,7 +48,7 @@
     variant = "";
   };
   services.xserver.windowManager.i3.enable = true;
-  services.xserver.displayManager.defaultSession = "none+i3";
+  services.displayManager.defaultSession = "none+i3";
 
   hardware.bluetooth = {
    enable = true;
@@ -64,7 +74,7 @@
   programs.firefox.enable = true;
   services.printing.enable = true;
   services.flatpak.enable = true;
-
+  programs.dconf.enable = true;
 
   environment.systemPackages = with pkgs; [
      nano
@@ -85,6 +95,10 @@
      ]))
      gnome-keyring
      python3
+     fastfetch
+     nerdfetch
+     pulseaudio
+     flameshot
   ];
 
   fonts.packages = with pkgs; [
@@ -115,7 +129,6 @@
       nitrogen
       libnotify
       joplin-desktop
-      catppuccin-gtk
       nwg-look
       github-desktop
       cava
@@ -123,9 +136,10 @@
       starship
       redshift
       libcanberra
-      catppuccin-papirus-folders
       catppuccin-grub
-      catppuccin-kvantum
+      apple-cursor
+      xdg-desktop-portal
+      eddie
     ];
   };
 
@@ -136,13 +150,31 @@
     extraGroups = [ "networkmanager" ];
     packages = with pkgs; [
       prismlauncher 
-      ddnet
       jellyfin-desktop
+      supertuxkart
+      lutris
+      jdk21
+      evtest
+      usbutils
+      taterclient-ddnet
+      ddnet
     ];
   };
 
-
-
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      monospace = [ "JetBrainsMono Nerd Font" ];
+      sansSerif = [ "JetBrainsMono Nerd Font" ];
+      serif = [ "JetBrainsMono Nerd Font" ];
+    };
+  };
+  environment.sessionVariables = {
+    XCURSOR_THEME = "macOS-White";
+    XCURSOR_SIZE = "24";
+    HYPRCURSOR_THEME = "macOS-White";
+    HYPRCURSOR_SIZE = "24";
+  };
 
   system.stateVersion = "26.05";
     
