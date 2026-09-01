@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ lib, inputs, config, pkgs, ... }:
 let
   home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/release-26.05.tar.gz;
 in
@@ -7,6 +7,7 @@ in
     [
       ./hardware-configuration.nix
       (import "${home-manager}/nixos")
+      <catppuccin/modules/nixos>
     ];
   
   home-manager.useUserPackages = true;
@@ -71,11 +72,12 @@ in
   };
 
   nixpkgs.config.allowUnfree = true;
-  programs.firefox.enable = true;
+  programs.firefox.enable = false;
   services.printing.enable = true;
   services.flatpak.enable = true;
   programs.dconf.enable = true;
-
+  services.gnome.gnome-keyring.enable = true;
+  
   environment.systemPackages = with pkgs; [
      nano
      wget
@@ -140,6 +142,11 @@ in
       apple-cursor
       xdg-desktop-portal
       eddie
+      arduino-ide
+      vscodium-fhs
+      anki
+      ankiAddons.recolor
+      bottom
     ];
   };
 
@@ -171,9 +178,9 @@ in
   };
   environment.sessionVariables = {
     XCURSOR_THEME = "macOS-White";
-    XCURSOR_SIZE = "24";
+    XCURSOR_SIZE = "40";
     HYPRCURSOR_THEME = "macOS-White";
-    HYPRCURSOR_SIZE = "24";
+    HYPRCURSOR_SIZE = "40";
   };
 
   system.stateVersion = "26.05";
