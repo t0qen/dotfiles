@@ -71,13 +71,31 @@ in
     pulse.enable = true;
   };
 
+  services.udisks2.enable = true;
   nixpkgs.config.allowUnfree = true;
   programs.firefox.enable = false;
   services.printing.enable = true;
-  services.flatpak.enable = true;
+  services.flatpak = {
+    enable = true;
+  };
   programs.dconf.enable = true;
   services.gnome.gnome-keyring.enable = true;
-  
+  programs.localsend.enable = true;
+  programs.localsend.openFirewall = true;
+
+#  security.polkit.extraConfig = ''
+#    polkit.addRule(function(action, subject) {
+#      if (subject.local && action.id == "org.freedesktop.udisks2.filesystem-mount-system") {
+#        return polkit.Result.YES;
+#      }
+#    });
+#  '';
+
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
+  };
+
   environment.systemPackages = with pkgs; [
      nano
      wget
@@ -101,6 +119,10 @@ in
      nerdfetch
      pulseaudio
      flameshot
+     lm_sensors
+     s-tui
+     stress-ng
+     geekbench_6
   ];
 
   fonts.packages = with pkgs; [
@@ -145,8 +167,12 @@ in
       arduino-ide
       vscodium-fhs
       anki
-      ankiAddons.recolor
       bottom
+      baobab
+      gimp
+      blender
+      feh
+      audacity
     ];
   };
 
@@ -165,6 +191,8 @@ in
       usbutils
       taterclient-ddnet
       ddnet
+      thunar
+      firefox
     ];
   };
 

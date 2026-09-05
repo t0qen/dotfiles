@@ -12,7 +12,7 @@
     enable = true;
     flavor = "mocha"; # latte, frappe, macchiato, or mocha
   };
-
+  
   gtk = {
     enable = true;
 #    theme = {
