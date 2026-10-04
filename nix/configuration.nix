@@ -82,6 +82,7 @@ in
   services.gnome.gnome-keyring.enable = true;
   programs.localsend.enable = true;
   programs.localsend.openFirewall = true;
+#  programs.adb.enable = true;
 
 #  security.polkit.extraConfig = ''
 #    polkit.addRule(function(action, subject) {
@@ -123,6 +124,9 @@ in
      s-tui
      stress-ng
      geekbench_6
+     gpu-screen-recorder
+     gpu-screen-recorder-gtk
+     unzip
   ];
 
   fonts.packages = with pkgs; [
@@ -132,9 +136,11 @@ in
   users.users."dev" = {
     isNormalUser = true;
     description = "dev";
-    extraGroups = [ "networkmanager" "wheel" "dialout" ];
+    extraGroups = [ "adbusers" "networkmanager" "wheel" "dialout" ];
     packages = with pkgs; [
-      polybar
+      (polybar.override {
+          pulseSupport = true;
+      })
       picom
       libreoffice-fresh
       mousepad
@@ -173,6 +179,11 @@ in
       blender
       feh
       audacity
+      tor-browser
+      easyeffects
+      android-tools
+      heimdall
+      samloader-rs 
     ];
   };
 
@@ -193,6 +204,8 @@ in
       ddnet
       thunar
       firefox
+      steam
+      arnis
     ];
   };
 
