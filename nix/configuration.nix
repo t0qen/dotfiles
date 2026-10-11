@@ -1,6 +1,7 @@
 { lib, inputs, config, pkgs, ... }:
 let
   home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/release-26.05.tar.gz;
+  unstable = import <nixos-unstable> { };
 in
 {
   imports =
@@ -71,6 +72,7 @@ in
     pulse.enable = true;
   };
 
+  services.timekpr.enable = true;
   services.udisks2.enable = true;
   nixpkgs.config.allowUnfree = true;
   programs.firefox.enable = false;
@@ -78,6 +80,7 @@ in
   services.flatpak = {
     enable = true;
   };
+  programs.nix-ld.enable = true;
   programs.dconf.enable = true;
   services.gnome.gnome-keyring.enable = true;
   programs.localsend.enable = true;
@@ -116,7 +119,7 @@ in
      ]))
      gnome-keyring
      python3
-     fastfetch
+	     fastfetch
      nerdfetch
      pulseaudio
      flameshot
@@ -158,7 +161,7 @@ in
       numlockx
       nitrogen
       libnotify
-      joplin-desktop
+      unstable.joplin-desktop
       nwg-look
       github-desktop
       cava
@@ -179,11 +182,11 @@ in
       blender
       feh
       audacity
-      tor-browser
       easyeffects
       android-tools
       heimdall
-      samloader-rs 
+      samloader-rs
+      meshtastic-web
     ];
   };
 
