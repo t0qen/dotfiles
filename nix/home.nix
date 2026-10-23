@@ -8,28 +8,25 @@
   home.username = "dev";
   home.homeDirectory = "/home/dev";
   home.stateVersion = "26.05";
+
   catppuccin = {
-    enable = true;
-    flavor = "mocha"; # latte, frappe, macchiato, or mocha
-  };
-  
+    enable = true; 
+    flavor = "mocha";
+    accent = "mauve";
+    gtk.icon.enable = true; 
+  };  
   gtk = {
     enable = true;
-#    theme = {
-#      name = "Catppuccin-Mocha-Standard-Mauve-Dark";
-#      package = pkgs.catppuccin-gtk.override {
-#        accents = [ "mauve" ];
-#        variant = "mocha";
-#        size = "standard";
-#      };
-#    };
-    iconTheme = {
-      name = "Papirus-Dark";
-    };  
+    theme = {
+      name = "catppuccin-mocha-mauve-standard";
+      package = pkgs.catppuccin-gtk.override {
+        variant = "mocha";
+        accents = [ "mauve" ];
+      };
+    };
     font = {
       name = "JetBrainsMono Nerd Font";
-      size = 14; 
-      package = pkgs.nerd-fonts.jetbrains-mono;
+      size = 13;
     };
   };
   

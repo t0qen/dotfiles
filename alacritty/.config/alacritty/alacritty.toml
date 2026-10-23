@@ -10,4 +10,5 @@ blur = true
 
 [font]
 normal = { family = "JetBrainsMono Nerd Font", style = "regular" }
-size = 15
+size = 13
+

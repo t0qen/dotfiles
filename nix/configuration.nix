@@ -95,11 +95,6 @@ in
 #    });
 #  '';
 
-  catppuccin = {
-    enable = true;
-    flavor = "mocha";
-  };
-
   environment.systemPackages = with pkgs; [
      nano
      wget
@@ -187,6 +182,7 @@ in
       heimdall
       samloader-rs
       meshtastic-web
+      tor-browser
     ];
   };
 
@@ -203,8 +199,6 @@ in
       jdk21
       evtest
       usbutils
-      taterclient-ddnet
-      ddnet
       thunar
       firefox
       steam
