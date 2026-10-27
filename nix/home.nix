@@ -29,7 +29,7 @@
       size = 13;
     };
   };
-  
+  programs.cava.enable = true;  
   home.pointerCursor = {
     enable = true;
     name = "macOS-White";

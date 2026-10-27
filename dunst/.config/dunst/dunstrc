@@ -6,6 +6,7 @@ origin = bottom-left
 monitor = 1
 offset = (40, 40)
 font = JetBrainsMono Nerd Font 15
+corner_radius = 20
 [urgency_low]
 background = "#1e1e2e"
 foreground = "#cdd6f4"

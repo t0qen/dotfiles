@@ -51,18 +51,19 @@ in
   };
   services.xserver.windowManager.i3.enable = true;
   services.displayManager.defaultSession = "none+i3";
-
+  services.tumbler.enable = true;
+  services.gvfs.enable = true;
   hardware.bluetooth = {
    enable = true;
    powerOnBoot = true;
   };
   services.blueman.enable = true;
-  hardware.bluetooth.settings = {
-    General = {
-      Enable = "Source,Sink,Media,Socket";
-      Experimental = true;
-    };
-  };
+#  hardware.bluetooth.settings = {
+#    General = {
+#      Enable = "Source,Sink,Media,Socket";
+#      Experimental = true;
+#    };
+#  };
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -181,8 +182,9 @@ in
       android-tools
       heimdall
       samloader-rs
-      meshtastic-web
-      tor-browser
+      jellyfin-desktop
+      sshfs
+      pixelorama
     ];
   };
 

@@ -123,3 +123,7 @@ bind '"\e[B": history-search-forward'
 set show-all-if-ambiguous on
 set completion-ignore-case on
 
+
+# terminal-wakatime setup
+export PATH="$HOME/.wakatime:$PATH"
+eval "$(terminal-wakatime init)"
