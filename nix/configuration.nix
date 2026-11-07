@@ -21,6 +21,10 @@ in
   boot.loader.grub.useOSProber = true;
   boot.loader.grub.fsIdentifier = "provided";
   #boot.loader.grub.theme = "catppuccin";
+ 
+  catppuccin.grub.enable = true;      
+  boot.plymouth.enable = true;        
+  catppuccin.plymouth.enable = true;
 
   networking.hostName = "home";
   networking.networkmanager.enable = true;
@@ -43,7 +47,21 @@ in
   };
 
   services.xserver.enable = true;
-  services.xserver.displayManager.lightdm.enable = true;
+  #services.xserver.displayManager.lightdm.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    package = pkgs.kdePackages.sddm;
+  };
+
+  catppuccin.sddm = {
+    enable = true;
+    font = "JetBrainsMono Nerd Font";
+    fontSize = "13";
+    background = /home/dev/dots/wallpaper/wallpaper.png;
+    clockEnabled = true;
+    userIcon = true;
+  };
+
   services.xserver.desktopManager.lxqt.enable = true;
   services.xserver.xkb = {
     layout = "us";
@@ -81,6 +99,7 @@ in
   services.flatpak = {
     enable = true;
   };
+  programs.niri.enable = true;
   programs.nix-ld.enable = true;
   programs.dconf.enable = true;
   services.gnome.gnome-keyring.enable = true;
@@ -177,7 +196,7 @@ in
       gimp
       blender
       feh
-      audacity
+      unstable.audacity
       easyeffects
       android-tools
       heimdall
@@ -185,6 +204,15 @@ in
       jellyfin-desktop
       sshfs
       pixelorama
+      slack
+      tor-browser
+      ayugram-desktop
+      waybar
+      swaybg
+      fuzzel
+      swaylock
+      swaynotificationcenter
+      rwpspread
     ];
   };
 

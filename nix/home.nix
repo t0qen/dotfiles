@@ -15,6 +15,7 @@
     accent = "mauve";
     gtk.icon.enable = true; 
   };  
+
   gtk = {
     enable = true;
     theme = {
@@ -29,7 +30,10 @@
       size = 13;
     };
   };
-  programs.cava.enable = true;  
+  programs.cava.enable = true;
+  programs.swaylock.enable = true;
+#  services.swaync.enable = true;
+  programs.fuzzel.enable = true;
   home.pointerCursor = {
     enable = true;
     name = "macOS-White";

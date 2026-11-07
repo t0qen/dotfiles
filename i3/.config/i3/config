@@ -22,7 +22,7 @@ exec --no-startup-id sh -c 'ntfy subscribe https://ntfy.lostpacket.org/camover_x
 exec --no-startup-id sh -c 'ntfy subscribe https://ntfy.lostpacket.org/camover "notify-send -a ntfy \"\$tags \$title\" \"\$message\""'
 exec --no-startup-id sh -c 'ntfy subscribe https://ntfy.lostpacket.org/srv "notify-send -a ntfy \"\$tags \$title\" \"\$message\""'
 exec --no-startup-id sh -c 'ntfy subscribe https://ntfy.lostpacket.org/catflap "notify-send -a ntfy \"\$tags \$title\" \"\$message\""'
-
+exec --no-startup-id AyuGram -startintray
 gaps inner 15px
 gaps outer 10px
 for_window [class="^.*"] border pixel 0
