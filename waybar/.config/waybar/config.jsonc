@@ -1,0 +1,46 @@
+[
+  {
+    "name": "bar",
+    "output": "DP-1",
+    "position": "left",
+    "layer": "top",
+    "width": 40,
+    "margin-top": 100,
+    "margin-bottom": 100,
+    "margin-right": 0,
+    "margin-left": 10,
+    "padding-right": 0,
+    "spacing": 8,
+    "reload_style_on_change": true,
+
+    "modules-left": ["tray"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "custom/powermenu"],
+
+    "clock": {
+      "interval": 1,
+      "rotate": 90,
+      "format": "{:%H:%M - %d %B}",
+      "format-alt": "{:%Y-%m-%d %H:%M:%S}",
+      "tooltip-format": "{:%A %d %B %Y}"
+    },
+    "tray": {
+      "rotate": 90,
+      "icon-size": 18,
+      "spacing": 4
+    },
+    "pulseaudio": {
+      "rotate": 90,
+      "format": "{volume}% 󰕾 ",
+      "format-muted": "{volume}% 󰖁",
+      "scroll-step": 5,
+      "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+    },
+    "custom/powermenu": {
+      "format": "󰐥",
+      "rotate": 90,
+      "tooltip": false,
+      "on-click": "wlogout"
+    },
+  }
+]

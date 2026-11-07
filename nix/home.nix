@@ -32,8 +32,10 @@
   };
   programs.cava.enable = true;
   programs.swaylock.enable = true;
+  programs.wlogout.enable = true;
+#  programs.waybar.enable = true;
 #  services.swaync.enable = true;
-  programs.fuzzel.enable = true;
+#  programs.fuzzel.enable = true;
   home.pointerCursor = {
     enable = true;
     name = "macOS-White";
@@ -43,9 +45,4 @@
     gtk.enable = true;
   };
 
-#  dconf.settings = {
-#    "org/gnome/desktop/interface" = {
-#      color-scheme = "prefer-dark";
-#    };
-#  };
 }

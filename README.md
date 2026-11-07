@@ -1,3 +1,7 @@
+> [!IMPORTANT]
+> This don't speak about my recent niri rice
+
+
 <div align="center">
 
   ### 💻️ personal dotfiles

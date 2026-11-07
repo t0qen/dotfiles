@@ -56,10 +56,10 @@ in
   catppuccin.sddm = {
     enable = true;
     font = "JetBrainsMono Nerd Font";
-    fontSize = "13";
+    fontSize = "16";
     background = /home/dev/dots/wallpaper/wallpaper.png;
-    clockEnabled = true;
-    userIcon = true;
+    clockEnabled = false;
+    userIcon = false;
   };
 
   services.xserver.desktopManager.lxqt.enable = true;
@@ -213,6 +213,7 @@ in
       swaylock
       swaynotificationcenter
       rwpspread
+      wlogout
     ];
   };
 

@@ -52,6 +52,9 @@ input {
 
 }
 
+cursor {
+	xcursor-size 40
+}
 output "DP-1" {
     mode "1680x1050@59.954"
     scale 1
@@ -122,7 +125,7 @@ layout {
         // If you enable the border, you probably want to disable the focus ring.
         // off
 
-        width 4
+        width 3
         active-color "#f5c2e7"
         inactive-color "#585b70"
         urgent-color "#f38ba8"
@@ -152,10 +155,10 @@ layout {
         // pixels and match the CSS box-shadow properties.
 
         // Softness controls the shadow blur radius.
-        softness 30
+        softness 20
 
         // Spread expands the shadow.
-        spread 2
+        spread 4
 
         // Offset moves the shadow relative to the window.
         offset x=0 y=5
@@ -185,7 +188,10 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
 spawn-at-startup "swaync"
-spawn-sh-at-startup "rwpspread -b swaybg -i ~/dots/wallpaper/wallpaper2.png"
+spawn-at-startup "joplin-desktop"
+spawn-sh-at-startup "AyuGram -startintray"
+spawn-sh-at-startup "vesktop --start-minimized" 
+spawn-sh-at-startup "rwpspread -b swaybg -i ~/dots/wallpaper/wallpaper.png"
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
@@ -238,13 +244,25 @@ window-rule {
 window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
-    opacity 0.999
+    opacity 0.99
     background-effect {
         blur true
     }
 }
+blur {
+    passes 1
+    offset 5.0
+    noise 0.02
+    saturation 1.5
+}
 
-
+layer-rule {
+    match namespace="^launcher$"
+    geometry-corner-radius 12
+    background-effect {
+        blur true
+    }
+}
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {
