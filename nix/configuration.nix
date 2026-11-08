@@ -171,7 +171,12 @@ in
       udiskie
       dex
       xclip
-      vscode
+      (vscode.overrideAttrs (old: {
+    postPatch = builtins.replaceStrings
+      [ "resources/app/node_modules/@vscode/ripgrep/bin/rg" ]
+      [ "resources/app/node_modules/@vscode/ripgrep-universal/bin/linux-x64/rg" ]
+      old.postPatch;
+      }))
       xss-lock
       numlockx
       nitrogen
@@ -214,6 +219,9 @@ in
       swaynotificationcenter
       rwpspread
       wlogout
+      wlsunset
+      slurp
+      wf-recorder
     ];
   };
 

@@ -60,7 +60,7 @@ window#waybar.bar {
 
 #pulseaudio {
   color: @text;
-  padding-bottom: 5px;
+  padding-bottom: 0px;
 }
 #pulseaudio.muted {
   color: @surface0;
@@ -69,6 +69,6 @@ window#waybar.bar {
 #custom-powermenu {
   color: @text;
   font-size: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
 }
 

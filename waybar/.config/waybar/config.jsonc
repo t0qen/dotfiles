@@ -38,7 +38,6 @@
     },
     "custom/powermenu": {
       "format": "󰐥",
-      "rotate": 90,
       "tooltip": false,
       "on-click": "wlogout"
     },
