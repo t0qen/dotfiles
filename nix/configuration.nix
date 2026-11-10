@@ -28,7 +28,9 @@ in
 
   networking.hostName = "home";
   networking.networkmanager.enable = true;
+  networking.networkmanager.dns = "none";
   programs.nm-applet.enable = true;
+  networking.nameservers = [ "192.168.1.31" ];
 
   nix.settings.experimental-features = [ "nix-command" ];
 
@@ -75,13 +77,12 @@ in
    enable = true;
    powerOnBoot = true;
   };
+  hardware.bluetooth.settings = {
+    General = {
+      Enable = "Source,Sink,Media,Socket";
+    };
+  };
   services.blueman.enable = true;
-#  hardware.bluetooth.settings = {
-#    General = {
-#      Enable = "Source,Sink,Media,Socket";
-#      Experimental = true;
-#    };
-#  };
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -222,6 +223,9 @@ in
       wlsunset
       slurp
       wf-recorder
+      grim
+      wev
+      yt-dlp
     ];
   };
 

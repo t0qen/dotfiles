@@ -183,10 +183,10 @@ layout {
     // Top and bottom struts will simply add outer gaps in addition to the area occupied by
     // layer-shell panels and regular gaps.
     struts {
-        // left 64
-        // right 64
-        // top 64
-        // bottom 64
+        left 16
+        right 20
+        top 32
+        bottom 32
     }
 }
 
@@ -202,7 +202,7 @@ spawn-at-startup "joplin-desktop"
 spawn-sh-at-startup "AyuGram -startintray"
 spawn-sh-at-startup "vesktop --start-minimized" 
 spawn-sh-at-startup "wlsunset -l 47.83 -L -4.20 -t 2500 -T 6500"
-
+spawn-at-startup "flameshot"
 spawn-sh-at-startup "rwpspread -b swaybg -i ~/dots/wallpaper/wallpaper2.png"
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -430,7 +430,9 @@ binds {
     Mod+WheelScrollLeft       { focus-column-left; }
     Mod+Ctrl+WheelScrollRight { move-column-right; }
     Mod+Ctrl+WheelScrollLeft  { move-column-left; }
-
+   
+    MouseBack { focus-column-left; }
+    MouseForward { focus-column-right; }
     // Usually scrolling up and down with Shift in applications results in
     // horizontal scrolling; these binds replicate that.
     Mod+Shift+WheelScrollDown      { focus-column-right; }
