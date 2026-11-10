@@ -226,6 +226,7 @@ in
       grim
       wev
       yt-dlp
+      (pkgs.callPackage ./nirimod/package.nix { })
     ];
   };
 

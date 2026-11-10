@@ -1,3 +1,6 @@
 [submodule "polybar/.config/polybar/scripts/pomodoro"]
 	path = polybar/.config/polybar/scripts/pomodoro
 	url = https://github.com/kirillin/polybar-pomodoro
+[submodule "nix/nirimod"]
+	path = nix/nirimod
+	url = https://github.com/srinivasr/nirimod.git
