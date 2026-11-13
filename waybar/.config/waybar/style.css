@@ -30,6 +30,7 @@
   font-size: 16px;
 }
 
+
 window#waybar {
   color: @text;
   background-color: rgba(17, 17, 27, 0.99);
@@ -50,14 +51,16 @@ window#waybar.bar {
 
 #clock {
   color: @lavender;
-  font-weight: 900;
-  padding-bottom: 25px;
+  font-weight: 700;
 }
 
 #tray {
   padding-top: 20px;
 }
 
+#mpris {
+  padding-top: 10px;
+}
 #pulseaudio {
   color: @text;
   padding-bottom: 0px;

@@ -14,19 +14,58 @@
     "reload_style_on_change": true,
 
     "modules-left": ["tray"],
-    "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "custom/powermenu"],
+    "modules-center": ["cava", "mpris"],
+    "modules-right": ["clock", "custom/powermenu"],
+ 
+    "mpris": {
+	"format": "{player_icon} {dynamic}",
+	"format-paused": "{status_icon} <i>{dynamic}</i>",
+	"player-icons": {
+		"default": "▶",
+		"mpv": "🎵"
+	},
+	"status-icons": {
+		"paused": "⏸"
+	},
+        "rotate": 90,
+        "max-length": 30,
+    },    
+    
+    "cava": {
+	//"cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
+        "rotate": 90,
+	"framerate": 30,
+	"autosens": 0,
+	"sensitivity": 4,
+	"bars": 10,
+	"lower_cutoff_freq": 50,
+	"higher_cutoff_freq": 10000,
+	"method": "pulse",
+	"source": "auto",
+	"bar_delimiter": 0,
+        "stereo": false,
+	"reverse": false,
+	"monstercat": true,
+	"waves": false,
+	"noise_reduction": 0.20,
+	"input_delay": 2,
+	"format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+	"actions": {
+		"on-click-right": "mode"
+	}
+    },
 
     "clock": {
       "interval": 1,
       "rotate": 90,
-      "format": "{:%H:%M - %d %B}",
+      "format": "{:%H:%M}",
       "format-alt": "{:%Y-%m-%d %H:%M:%S}",
       "tooltip-format": "{:%A %d %B %Y}"
     },
     "tray": {
       "rotate": 90,
       "icon-size": 18,
+      "show-passive-items": true,
       "spacing": 4
     },
     "pulseaudio": {

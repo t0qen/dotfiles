@@ -47,7 +47,18 @@ in
     LC_TELEPHONE = "fr_FR.UTF-8";
     LC_TIME = "fr_FR.UTF-8";
   };
-
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [
+      cups-filters
+      cups-browsed
+    ];
+  };
   services.xserver.enable = true;
   #services.xserver.displayManager.lightdm.enable = true;
   services.displayManager.sddm = {
@@ -96,7 +107,6 @@ in
   services.udisks2.enable = true;
   nixpkgs.config.allowUnfree = true;
   programs.firefox.enable = false;
-  services.printing.enable = true;
   services.flatpak = {
     enable = true;
   };
@@ -146,6 +156,7 @@ in
      gpu-screen-recorder
      gpu-screen-recorder-gtk
      unzip
+     bc
   ];
 
   fonts.packages = with pkgs; [
@@ -211,7 +222,6 @@ in
       sshfs
       pixelorama
       slack
-      tor-browser
       ayugram-desktop
       waybar
       swaybg
@@ -226,7 +236,10 @@ in
       grim
       wev
       yt-dlp
+      godot
       (pkgs.callPackage ./nirimod/package.nix { })
+      waybar-mpris
+      libcava
     ];
   };
 
